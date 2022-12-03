@@ -2,13 +2,10 @@
 
 <h1>Movies</h1>
 
-<div id="movies" style='visibility: hidden'>
-  <% @movies.each do |movie| %>
-    <%= render movie %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
-  <% end %>
+<div id="movies">
+  <%= @movie.title %>
+  <%= @movie.rating %>
 </div>
 
+<%= link_to "Next Suggestion", movies_path, class: 'border-2 border-black text-blue-700'%>
 <%= link_to "New movie", new_movie_path %>

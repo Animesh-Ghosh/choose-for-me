@@ -3,7 +3,16 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
-    @movies = Movie.all
+    rejected_movies = current_user.movies
+    movies = Movie.all.excluding(rejected_movies)
+    if movies.any?
+      @movie = movies.sort_by{rand}.first
+      current_user.movies << @movie
+      current_user.save!
+    else
+      current_user.movies.delete_all
+      @movie = Movie.first
+    end
   end
 
   # GET /movies/1 or /movies/1.json
