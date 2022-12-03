@@ -1,7 +1,9 @@
-10.times do
+# frozen_string_literal: true
+
+100.times do
   title = Faker::Movie.title
-  rating = Faker::Movie.rand_in_range(4,10)
-  Movie.create!(title: title, rating: rating)
+  rating = Faker::Movie.rand_in_range(4, 10)
+  Movie.create!(title:, rating:)
 end
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
