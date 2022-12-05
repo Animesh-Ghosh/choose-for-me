@@ -5,14 +5,16 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
+    # randomize(Movie)
+    # randomize(Food)
     rejected_movies = current_user.movies
     movies = Movie.all.excluding(rejected_movies)
     if movies.any?
       @movie = movies.min_by { rand }
-      current_user.movies << @movie
+      rejected_movies << @movie
       current_user.save!
     else
-      current_user.movies.delete_all
+      rejected_movies.delete_all
       @movie = Movie.first
     end
   end
