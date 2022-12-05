@@ -1,0 +1,14 @@
+{
+  "name": "app",
+  "private": "true",
+  "dependencies": {
+    "esbuild": "^0.15.16",
+    "postcss": "^8.4.16"
+  },
+  "scripts": {
+    "prettier-format": "prettier --config .prettierrc 'app/javascript/react/src/**/*.tsx' --write",
+    "check-types": "tsc --project tsconfig.json --noEmit --watch --preserveWatchOutput",
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets --loader:.jpg=dataurl --loader:.png=dataurl --loader:.svg=dataurl",
+    "test": "jest"
+  }
+}

@@ -1,11 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Movies</h1>
+<div class='flex item-start'>
+  <div id="movies">
+    <%= @movie.title %>
+    <%= @movie.rating %>
+  </div>
 
-<div id="movies">
-  <%= @movie.title %>
-  <%= @movie.rating %>
+  <%= button_to "Next Suggestion", movies_path, class: 'bg-black'%>
 </div>
-
-<%= button_to "Next Suggestion", movies_path, class: 'px-5 py-2 text-align:center border rounded-full bg-indigo-700'%>
 <%= link_to "New movie", new_movie_path %>
