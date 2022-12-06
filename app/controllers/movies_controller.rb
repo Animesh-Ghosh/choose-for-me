@@ -68,6 +68,11 @@ class MoviesController < ApplicationController
     end
   end
 
+  def clear_history
+    current_user.movies.delete_all
+    redirect_to movies_path
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

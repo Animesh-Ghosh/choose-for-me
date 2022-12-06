@@ -2,7 +2,7 @@
 
 100.times do
   title = Faker::Movie.title
-  rating = Faker::Movie.rand_in_range(4, 10)
+  rating = Faker::Movie.rand_in_range(1, 5)
   Movie.create!(title:, rating:)
 end
 # This file should contain all the record creation needed to seed the database with its default values.
