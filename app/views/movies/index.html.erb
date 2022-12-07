@@ -18,9 +18,10 @@
   
 </div>
 <div class='flex justify-center'>
-  <div class='card max-h-[500px] w-[500px] overflow-y-scroll'>
+  <div class='card  w-[500px]'>
+    <p class='font-bold text-center'>History</p>
+    <div class=' rounded-lg max-h-[500px] overflow-y-auto'>
       <ul>
-        <li class='font-bold text-center'>History</li>
         <% @current_user.movies[..-2].each_with_index do |movie, index|%>
           <% if index.even? %>
             <li class='bg-gray-100 flex items-start justify-between rounded px-2'>
@@ -42,9 +43,10 @@
           <% end %>
         <%end%>
       </ul>
-      <div class='flex justify-center py-2'>
-        <%= button_to "Clear History", clear_history_movies_path, class: 'btn-secondary'%>
-      </div>
+    </div>
+    <div class='flex justify-center py-2'>
+      <%= button_to "Clear History", clear_history_movies_path, class: 'btn-secondary'%>
     </div>
   </div>
+</div>
 <%= link_to "New movie", new_movie_path %>
