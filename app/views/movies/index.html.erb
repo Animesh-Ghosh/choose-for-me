@@ -11,37 +11,40 @@
         <% end %>
       </div>
     </div>
-    <div class='flex justify-center'>
+    <div class='relative flex justify-center'>
       <%= link_to "Next Suggestion",movies_path, class: 'btn-primary'%>
     </div>
   </div>
-  <div class='card max-h-[500px] overflow-y-scroll'>
-    <ul>
-      <li class='font-bold text-center'>History</li>
-      <% @current_user.movies[..-2].each_with_index do |movie, index|%>
-        <% if index.even? %>
-          <li class='bg-gray-100 flex items-start justify-between rounded px-2'>
-            <%=movie.title%> 
-            <div class='flex justify-end items-start'>
-              <% (0..movie.rating.to_i-1).each do %>
-                <%= image_tag 'star.svg' , style: 'width:20px'%>
-              <% end %>
-            </div>
-          </li>
-        <% else%>
-          <li class='bg-white flex items-start justify-between rounded px-2'> <%=movie.title%> 
-            <div class='flex justify-end items-start'>
+  
+</div>
+<div class='flex justify-center'>
+  <div class='card max-h-[500px] w-[500px] overflow-y-scroll'>
+      <ul>
+        <li class='font-bold text-center'>History</li>
+        <% @current_user.movies[..-2].each_with_index do |movie, index|%>
+          <% if index.even? %>
+            <li class='bg-gray-100 flex items-start justify-between rounded px-2'>
+              <%=movie.title%> 
+              <div class='flex justify-end items-start'>
                 <% (0..movie.rating.to_i-1).each do %>
                   <%= image_tag 'star.svg' , style: 'width:20px'%>
                 <% end %>
               </div>
-          </li>
-        <% end %>
-      <%end%>
-    </ul>
-    <div class='flex justify-center'>
-      <%= button_to "Clear History", clear_history_movies_path, class: 'btn-primary'%>
+            </li>
+          <% else%>
+            <li class='bg-white flex items-start justify-between rounded px-2'> <%=movie.title%> 
+              <div class='flex justify-end items-start'>
+                  <% (0..movie.rating.to_i-1).each do %>
+                    <%= image_tag 'star.svg' , style: 'width:20px'%>
+                  <% end %>
+                </div>
+            </li>
+          <% end %>
+        <%end%>
+      </ul>
+      <div class='flex justify-center py-2'>
+        <%= button_to "Clear History", clear_history_movies_path, class: 'btn-secondary'%>
+      </div>
     </div>
   </div>
-</div>
 <%= link_to "New movie", new_movie_path %>
