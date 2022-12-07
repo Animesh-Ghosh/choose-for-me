@@ -1,0 +1,34 @@
+<% if options.drop(1).present? %>
+  <div class='flex justify-center'>
+    <div class='card w-[500px]'>
+      <p class='font-bold text-center'>History</p>
+      <div class=' rounded-lg max-h-[450px] overflow-y-auto'>
+        <ul>
+          <% options[..-2].each_with_index do |option, index|%>
+            <% if index.even? %>
+              <li class='bg-gray-100 flex items-start justify-between rounded px-2'>
+                <%=option.title%> 
+                <div class='flex justify-end items-start'>
+                  <% (0..option.rating.to_i-1).each do %>
+                    <%= image_tag 'star.svg' , style: 'width:20px'%>
+                  <% end %>
+                </div>
+              </li>
+            <% else%>
+              <li class='bg-white flex items-start justify-between rounded px-2'> <%=option.title%> 
+                <div class='flex justify-end items-start'>
+                    <% (0..option.rating.to_i-1).each do %>
+                      <%= image_tag 'star.svg' , style: 'width:20px'%>
+                    <% end %>
+                  </div>
+              </li>
+            <% end %>
+          <%end%>
+        </ul>
+      </div>
+      <div class='flex justify-center py-2'>
+        <%= button_to "Clear History", clear_history_path, class: 'btn-secondary'%>
+      </div>
+    </div>
+  </div>
+<% end %>
