@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<h1 class='text-center font-bold'>Movies</h1>
+<h1 class='heading'>Movies</h1>
 <div class='flex justify-center'>
   <div class='card w-[500px]'>
     <div id="movies" class='text-center'>
@@ -19,5 +19,5 @@
 </div>
 <%= render 'layouts/history', { options: @current_user.movies, clear_history_path: clear_history_movies_path } %>
 <div class='flex justify-center'>
-  <%= link_to "Add new movie", new_movie_path, class: 'btn-secondary' %>
+  <%= link_to "Add new movie", new_movie_path, class: 'btn-primary' %>
 </div>
