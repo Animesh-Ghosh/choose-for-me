@@ -14,7 +14,7 @@
   }
 
   .card {
-    @apply flex-col min-w-[350px] border-2 rounded-xl shadow-xl items-center justify-center px-4 py-2.5 m-2;
+    @apply flex-col bg-white min-w-[350px] border-2 rounded-xl shadow-xl items-center justify-center px-4 py-2.5 m-2;
   }
 
   /* width */
