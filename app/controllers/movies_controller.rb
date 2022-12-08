@@ -7,16 +7,7 @@ class MoviesController < ApplicationController
   def index
     # randomize(Movie)
     # randomize(Food)
-    rejected_movies = current_user.movies
-    movies = Movie.all.excluding(rejected_movies)
-    if movies.any?
-      @movie = movies.min_by { rand }
-      rejected_movies << @movie
-      current_user.save!
-    else
-      rejected_movies.delete_all
-      @movie = Movie.first
-    end
+    @movie = Movie.randomize(current_user)
   end
 
   # GET /movies/1 or /movies/1.json
@@ -70,6 +61,7 @@ class MoviesController < ApplicationController
 
   def clear_history
     current_user.movies.delete_all
+    flash[:notice] = 'History has been cleared'
     redirect_to movies_path
   end
 
