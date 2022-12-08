@@ -8,16 +8,16 @@ class Topic < ApplicationRecord
   scope :books, -> { where(type: 'Topic::Book') }
 
   def self.randomize(current_user)
-    rejected_movies = current_user.movies
-    movies = Movie.all.excluding(rejected_movies)
+    rejected_topics = current_user.movies
+    movies = Topic.movies.all.excluding(rejected_topics)
     if movies.any?
       @movie = movies.min_by { rand }
-      rejected_movies << @movie
+      rejected_topics << @movie
       current_user.save
       @movie
     else
-      rejected_movies.delete_all
-      @movie = Movie.first
+      rejected_topics.delete_all
+      @movie = Topic.movies.first
     end
   end
 end
