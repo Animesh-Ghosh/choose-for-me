@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
   def index
     # randomize(Movie)
     # randomize(Food)
-    @movie = Topic.randomize(current_user)
+    @movie = Topic.randomize(current_user, Topic.movies)
   end
 
   # GET /movies/1 or /movies/1.json

@@ -7,17 +7,17 @@ class Topic < ApplicationRecord
   scope :foods, -> { where(type: 'Topic::Food') }
   scope :books, -> { where(type: 'Topic::Book') }
 
-  def self.randomize(current_user)
-    rejected_topics = current_user.movies
-    movies = Topic.movies.all.excluding(rejected_topics)
-    if movies.any?
-      @movie = movies.min_by { rand }
-      rejected_topics << @movie
+  def self.randomize(current_user, topics)
+    rejected_options = current_user.movies
+    options = topics.all.excluding(rejected_options)
+    if options.any?
+      @option = options.min_by { rand }
+      rejected_options << @option
       current_user.save
-      @movie
+      @option
     else
-      rejected_topics.delete_all
-      @movie = Topic.movies.first
+      rejected_options.delete_all
+      @option = topics.first
     end
   end
 end
