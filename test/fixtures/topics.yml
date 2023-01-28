@@ -1,0 +1,22 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+<% 1.upto(5) do |i| %>
+movie_<%= i %>:
+  title: "<%= Faker::Movie.title %>"
+  rating: <%= Faker::Movie.rand_in_range(1, 5) %>
+  type: Topic::Movie
+<% end %>
+
+<% 1.upto(5) do |i| %>
+food_<%= i %>:
+  title: "<%= Faker::Food.dish %>"
+  rating: <%= Faker::Food.rand_in_range(1, 5) %>
+  type: Topic::Food
+<% end %>
+
+<% 1.upto(5) do |i| %>
+book_<%= i %>:
+  title: "<%= Faker::Book.title %>"
+  rating: <%= Faker::Book.rand_in_range(1, 5) %>
+  type: Topic::Book
+<% end %>
